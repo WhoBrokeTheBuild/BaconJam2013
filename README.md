@@ -6,4 +6,4 @@ Team Members
 Stephen Lane-Walsh - Programmer
 Nedim "Net" Ibrahimkadic - Creative Director
 Wesley Davis - Artist
- - Musician
+Cameron Seebach - Musician
