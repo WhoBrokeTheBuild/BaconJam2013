@@ -53,17 +53,17 @@ namespace BaconJam2013
         public Player(Vector2 pos)
             : base(Assets.Animations["attackflower-dark-idle"], pos, Vector2.Zero, Vector2.Zero, Color.White)
         {
-            _gravity = 0.8f;
+            _gravity = Config.GetFloat("Gravity");
 
-            _jumpVelStart = 12.0f;
-            _jumpVelMax = 20.0f;
+            _jumpVelStart = Config.GetFloat("JumpVelStart");
+            _jumpVelMax = Config.GetFloat("JumpVelMax");
             _jumpVelLeft = _jumpVelMax;
 
-            _damping = 1.0f;
-            _airDamping = 1.5f;
+            _damping = Config.GetFloat("Damping");
+            _airDamping = Config.GetFloat("AirDamping");
 
-            _moveAcc = 2.0f;
-            _speedMax = 5.0f;
+            _moveAcc = Config.GetFloat("MovementAcc");
+            _speedMax = Config.GetFloat("MaxSpeed");
 
             _vertState = VertState.Air;
             _state = State.Jump;
@@ -75,15 +75,19 @@ namespace BaconJam2013
 
             if (_vertState == VertState.Air)
             {
-                Vel.Y += _gravity;
+                Vel.Y -= _gravity;
 
                 if (Pos.Y > Core.HEIGHT)
                 {
+                    Vel.Y = 0;
                     Pos.Y = Core.HEIGHT;
-                    Vel = Vector2.Zero;
+                    _state = State.Idle;
                     _vertState = VertState.Ground;
                 }
             }
+
+            if (Math.Abs(Vel.X) < 0.01f)
+                Vel.X = 0.0f;
 
             if (Vel.X != 0.0f)
             {
@@ -103,6 +107,19 @@ namespace BaconJam2013
 
         public override void InputPressed(object sender, InputData data)
         {
+            switch (data.Input)
+            {
+                case GameInputs.Jump:
+
+                    if (_vertState == VertState.Ground)
+                    {
+                        Vel.Y -= _jumpVelStart;
+                        _jumpVelLeft = _jumpVelMax - _jumpVelStart;
+                        _vertState = VertState.Air;
+                    }
+
+                    break;
+            }
         }
 
         public override void InputReleased(object sender, InputData data)
@@ -117,8 +134,11 @@ namespace BaconJam2013
 
                     if (_vertState == VertState.Ground)
                     {
-                        Vel.Y -= _jumpVelStart;
-                        _jumpVelLeft = _jumpVelMax - _jumpVelStart;
+                        if (_jumpVelLeft > 0.0f)
+                        {
+                            //Vel.Y -= 1.0f;
+                            _jumpVelLeft -= 1.0f;
+                        }
                     }
 
                     break;

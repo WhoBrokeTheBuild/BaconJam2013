@@ -39,6 +39,7 @@ namespace BaconJam2013
         {
             base.Update(sender, data);
 
+            Pos += Vel;
             Vel += Acc;
 
             if (Vel.X > TERMINAL_VEL)
@@ -46,8 +47,6 @@ namespace BaconJam2013
 
             if (Vel.Y > TERMINAL_VEL)
                 Vel.Y = TERMINAL_VEL;
-
-            Pos += Vel;
         }
 
         public virtual void InputPressed(object sender, InputData data)
