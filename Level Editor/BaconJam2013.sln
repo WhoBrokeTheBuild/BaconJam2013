@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaconJam2013", "BaconJam2013\BaconJam2013\BaconJam2013.csproj", "{61ACF475-B6EB-4574-96AE-D735838E5DC5}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "BaconJam2013Content", "BaconJam2013\BaconJam2013Content\BaconJam2013Content.contentproj", "{4A7D3BB7-256D-4981-81D1-41D73D911C15}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61ACF475-B6EB-4574-96AE-D735838E5DC5}.Debug|x86.ActiveCfg = Debug|x86
+		{61ACF475-B6EB-4574-96AE-D735838E5DC5}.Debug|x86.Build.0 = Debug|x86
+		{61ACF475-B6EB-4574-96AE-D735838E5DC5}.Release|x86.ActiveCfg = Release|x86
+		{61ACF475-B6EB-4574-96AE-D735838E5DC5}.Release|x86.Build.0 = Release|x86
+		{4A7D3BB7-256D-4981-81D1-41D73D911C15}.Debug|x86.ActiveCfg = Debug|x86
+		{4A7D3BB7-256D-4981-81D1-41D73D911C15}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
