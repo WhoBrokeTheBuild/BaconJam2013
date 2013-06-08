@@ -25,6 +25,13 @@ namespace BaconJam2013
 
         public static Sprite NoSprite;
 
+        public static Dictionary<string, Texture2D> Textures
+        {
+            get
+            {
+                return mTextures;
+            }
+        }
         public static Dictionary<string, Animation> Animations
         {
             get

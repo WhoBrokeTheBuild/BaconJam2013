@@ -81,7 +81,7 @@ namespace BaconJam2013
             if (currentFrame == null)
                 return;
 
-            data.SpriteBatch.Draw(currentFrame.Texture, Pos, currentFrame.Source, BlendColor, Rot, Origin, Vector2.One, SpriteEffects.None, Depth);
+            data.SpriteBatch.Draw(currentFrame.Texture, Pos - Viewport.Pos, currentFrame.Source, BlendColor, Rot, Origin, Vector2.One, SpriteEffects.None, Depth);
         }
 
         public virtual void AnimationComplete(object sender, EventArgs data)
@@ -91,7 +91,7 @@ namespace BaconJam2013
 
         public Rectangle Bounds()
         {
-            return new Rectangle((int)Pos.X, (int)Pos.Y, (int)Size.X, (int)Size.Y);
+            return new Rectangle((int)(Pos.X - Origin.X), (int)(Pos.Y - Origin.Y), (int)Size.X, (int)Size.Y);
         }
 
         public virtual void Reset()

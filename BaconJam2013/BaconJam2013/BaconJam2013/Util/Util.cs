@@ -195,6 +195,69 @@ namespace BaconJam2013
 
         }
 
+        public static Side Collide(Rectangle first, Rectangle second, Vector2 vel)
+        {
+
+            if (first.Right  > second.Left   &&
+                first.Left   < second.Right  &&
+                first.Bottom > second.Top    &&
+                first.Top    < second.Bottom )
+            {
+                float backScale1 = float.MinValue;
+                float backScale2 = float.MinValue;
+
+                if (vel.X > 0)
+                {
+                    backScale1 = (second.Left - first.Right) / vel.X;
+                }
+
+                if (vel.X < 0)
+                {
+                    backScale1 = (second.Right - first.Left) / vel.X;
+                }
+
+                if (vel.Y > 0)
+                {
+                    backScale2 = (second.Top - first.Bottom) / vel.Y;
+                }
+
+                if (vel.Y < 0)
+                {
+                    backScale2 = (second.Bottom - first.Top) / vel.Y;
+                }
+
+                if (backScale1 < backScale2)
+                {
+                    if (vel.Y < 0)
+                    {
+                        return Side.Top;
+                    }
+
+                    if (vel.Y > 0)
+                    {
+                        return Side.Bottom;
+                    }
+                }
+
+                if (backScale2 < backScale1)
+                {
+                    if (vel.X > 0)
+                    {
+                        return Side.Left;
+                    }
+
+                    if (vel.X < 0)
+                    {
+                        return Side.Right;
+                    }
+                }
+
+                return Side.None; // Was 0
+
+            }
+
+            return Side.None; // Was -1
+        }
     }
 
 }

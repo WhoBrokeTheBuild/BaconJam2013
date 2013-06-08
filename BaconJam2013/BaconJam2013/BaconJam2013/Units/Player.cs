@@ -34,11 +34,11 @@ namespace BaconJam2013
         : ActiveUnit
     {
 
-        private VertState
-            _vertState;
+        public VertState
+            VertState;
 
-        private State
-            _state;
+        public State
+            State;
 
         private float
             _gravity,
@@ -51,7 +51,7 @@ namespace BaconJam2013
             _airDamping;
 
         public Player(Vector2 pos)
-            : base(Assets.Animations["attackflower-dark-idle"], pos, Vector2.Zero, Vector2.Zero, Color.White)
+            : base(Assets.Animations["attackflower-bright-idle"], pos, Vector2.Zero, Vector2.Zero, Color.White)
         {
             _gravity = Config.GetFloat("Gravity");
 
@@ -65,24 +65,24 @@ namespace BaconJam2013
             _moveAcc = Config.GetFloat("MovementAcc");
             _speedMax = Config.GetFloat("MaxSpeed");
 
-            _vertState = VertState.Air;
-            _state = State.Jump;
+            VertState = VertState.Air;
+            State = State.Jump;
         }
 
         public override void Update(object sender, UpdateData data)
         {
             base.Update(sender, data);
 
-            if (_vertState == VertState.Air)
+            if (VertState == VertState.Air)
             {
                 Vel.Y -= _gravity;
 
-                if (Pos.Y > Core.HEIGHT)
+                if (Pos.Y > 2048)
                 {
                     Vel.Y = 0;
-                    Pos.Y = Core.HEIGHT;
-                    _state = State.Idle;
-                    _vertState = VertState.Ground;
+                    Pos.Y = 2048;
+                    State = State.Idle;
+                    VertState = VertState.Ground;
                 }
             }
 
@@ -93,7 +93,7 @@ namespace BaconJam2013
             {
                 float damp;
 
-                if (_vertState == VertState.Ground)
+                if (VertState == VertState.Ground)
                     damp = _damping;
                 else
                     damp = _airDamping;
@@ -105,17 +105,29 @@ namespace BaconJam2013
                 Vel.X = _speedMax * Util.Sign(Vel.X);
         }
 
+        public override void Render(object sender, RenderData data)
+        {
+            base.Render(sender, data);
+
+            Rectangle bounds = Bounds();
+
+            data.SpriteBatch.Draw(Assets.Animations["tile-placeholder"].Frame(0).Texture, new Vector2(bounds.Left, bounds.Top) - Viewport.Pos, Color.Red);
+            data.SpriteBatch.Draw(Assets.Animations["tile-placeholder"].Frame(0).Texture, new Vector2(bounds.Left, bounds.Bottom) - Viewport.Pos, Color.Red);
+            data.SpriteBatch.Draw(Assets.Animations["tile-placeholder"].Frame(0).Texture, new Vector2(bounds.Right, bounds.Top) - Viewport.Pos, Color.Red);
+            data.SpriteBatch.Draw(Assets.Animations["tile-placeholder"].Frame(0).Texture, new Vector2(bounds.Right, bounds.Bottom) - Viewport.Pos, Color.Red);
+        }
+
         public override void InputPressed(object sender, InputData data)
         {
             switch (data.Input)
             {
                 case GameInputs.Jump:
 
-                    if (_vertState == VertState.Ground)
+                    if (VertState == VertState.Ground)
                     {
                         Vel.Y -= _jumpVelStart;
                         _jumpVelLeft = _jumpVelMax - _jumpVelStart;
-                        _vertState = VertState.Air;
+                        VertState = VertState.Air;
                     }
 
                     break;
@@ -132,11 +144,11 @@ namespace BaconJam2013
             {
                 case GameInputs.Jump:
 
-                    if (_vertState == VertState.Ground)
+                    if (VertState == VertState.Air)
                     {
                         if (_jumpVelLeft > 0.0f)
                         {
-                            //Vel.Y -= 1.0f;
+                            Vel.Y -= 1.0f;
                             _jumpVelLeft -= 1.0f;
                         }
                     }

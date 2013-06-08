@@ -62,6 +62,15 @@ namespace BaconJam2013
     public delegate void UpdateEventHandler(object sender, UpdateData data);
     public delegate void RenderEventHandler(object sender, RenderData data);
 
+    public enum Side
+    {
+        None = -1,
+        Top,
+        Bottom,
+        Left,
+        Right
+    }
+
     public class Core 
         : Microsoft.Xna.Framework.Game
     {
@@ -83,6 +92,9 @@ namespace BaconJam2013
 
         private Assets
             _assets;
+
+        private Viewport
+            _viewport;
 
         public const int
             WIDTH = 640,
@@ -110,8 +122,7 @@ namespace BaconJam2013
             base.Initialize();
         }
 
-        public Texture2D attackFlowerIdle;
-        public Player attackFlower;
+        TestRoom test;
 
         protected override void LoadContent()
         {
@@ -122,18 +133,11 @@ namespace BaconJam2013
             _input = new Input();
             _config = new Config();
             _assets = new Assets();
+            _viewport = new Viewport();
 
             _assets.LoadAssets(Content);
 
-            attackFlower = new Player(new Vector2(200));
-
-            Input.PressedEvent += InputPressed;
-        }
-
-        public void InputPressed(object sender, InputData data)
-        {
-            if (data.Input == GameInputs.Jump)
-                attackFlower.Reset();
+            test = new TestRoom();
         }
 
         protected override void UnloadContent()
