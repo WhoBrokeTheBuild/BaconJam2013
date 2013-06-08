@@ -14,7 +14,7 @@ namespace BaconJam2013
 
     public delegate void AnimationCompleteHandler(object sender, EventArgs data);
 
-    class BasicUnit
+    public class BasicUnit
     {
 
         private Animation
@@ -47,12 +47,16 @@ namespace BaconJam2013
             Animating,
             Looping;
 
-        public BasicUnit(Animation animation, Vector2 pos, float rot = 0.0f)
+        public BasicUnit(Animation animation, Vector2 pos, Color blendColor, float rot = 0.0f)
         {
             SetAnimation(animation);
 
+            if (blendColor == null)
+                blendColor = Color.White;
+
             Pos = pos;
             Rot = rot;
+            BlendColor = blendColor;
 
             _frame = 0;
             _animationComplete = false;

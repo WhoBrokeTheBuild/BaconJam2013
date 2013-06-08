@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BaconJam2013
 {
-    class Player
+    public class Player
     {
 
 

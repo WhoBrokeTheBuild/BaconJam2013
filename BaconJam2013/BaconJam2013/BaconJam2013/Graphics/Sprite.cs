@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace BaconJam2013
 {
-    class Sprite
+    public class Sprite
     {
 
         public Texture2D
@@ -19,6 +19,12 @@ namespace BaconJam2013
 
         public Rectangle
             Source;
+
+        public Sprite(Texture2D texture, Rectangle source)
+        {
+            Texture = texture;
+            Source = source;
+        }
 
     }
 }

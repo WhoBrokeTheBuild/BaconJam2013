@@ -54,7 +54,7 @@ namespace BaconJam2013
 
         public RenderData(SpriteBatch spriteBatch)
         {
-            _spriteBatch = SpriteBatch;
+            _spriteBatch = spriteBatch;
         }
 
     }
@@ -104,6 +104,9 @@ namespace BaconJam2013
             base.Initialize();
         }
 
+        public Texture2D attackFlowerIdle;
+        public BasicUnit attackFlower;
+
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -112,7 +115,18 @@ namespace BaconJam2013
 
             _input = new Input();
 
-            new Test();
+            attackFlowerIdle = Content.Load<Texture2D>("sprsht_attackflower_idle");
+
+            List<Sprite> frames = new List<Sprite>();
+
+            for (int i = 0; i < 10; ++i)
+            {
+                frames.Add(new Sprite(attackFlowerIdle, new Rectangle(i * 60, 0, 60, 60)));
+            }
+
+            Animation anim = new Animation(frames, new Vector2(60), 200, true, true);
+
+            attackFlower = new BasicUnit(anim, new Vector2(100), Color.White);
         }
 
         protected override void UnloadContent()
@@ -137,8 +151,12 @@ namespace BaconJam2013
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
+
             if (RenderEvent != null)
                 RenderEvent(this, new RenderData(_spriteBatch));
+
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }

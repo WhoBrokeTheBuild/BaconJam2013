@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace BaconJam2013
 {
-    class Animation
+    public class Animation
     {
 
         private List<Sprite>
