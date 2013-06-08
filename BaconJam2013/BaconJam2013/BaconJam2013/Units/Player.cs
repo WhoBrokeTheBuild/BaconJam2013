@@ -51,7 +51,7 @@ namespace BaconJam2013
             _airDamping;
 
         public Player(Vector2 pos)
-            : base(Assets.Animations["attackflower-bright-idle"], pos, Vector2.Zero, Vector2.Zero, Color.White)
+            : base(Assets.Animations["attackflower-dark-idle"], pos, Vector2.Zero, Vector2.Zero, Color.White)
         {
             _gravity = 0.8f;
 
