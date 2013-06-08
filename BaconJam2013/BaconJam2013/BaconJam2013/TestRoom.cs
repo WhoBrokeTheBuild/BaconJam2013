@@ -89,7 +89,7 @@ namespace BaconJam2013
 
                 if (!below)
                 {
-                    if (platBounds.Intersects(new Rectangle(playerBounds.X, playerBounds.Bottom, playerBounds.Width, 3)))
+                    if (platBounds.Intersects(new Rectangle(playerBounds.X, playerBounds.Bottom, playerBounds.Width, 2)))
                         below = true;
                 }
 
@@ -143,7 +143,6 @@ namespace BaconJam2013
             if (_player.VertState == VertState.Ground && !below)
             {
                 _player.VertState = VertState.Air;
-                Console.WriteLine("Falling");
             }
         }
 
