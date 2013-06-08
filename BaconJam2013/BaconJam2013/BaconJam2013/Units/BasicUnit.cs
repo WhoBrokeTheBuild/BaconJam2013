@@ -47,7 +47,7 @@ namespace BaconJam2013
             Animating,
             Looping;
 
-        public BasicUnit(Animation animation, Vector2 pos, Color blendColor, float rot = 0.0f)
+        public BasicUnit(Animation animation, Vector2 pos, Color blendColor, float rot = 0.0f, float depth = 1.0f)
         {
             SetAnimation(animation);
 
@@ -66,7 +66,7 @@ namespace BaconJam2013
             AnimationCompleteEvent += AnimationComplete;
         }
 
-        public void Update(object sender, UpdateData data)
+        public virtual void Update(object sender, UpdateData data)
         {
             if (Animating && !(Looping && _animationComplete))
             {
@@ -74,7 +74,7 @@ namespace BaconJam2013
             }
         }
 
-        public void Render(object sender, RenderData data)
+        public virtual void Render(object sender, RenderData data)
         {
             Sprite currentFrame = _animation.Frame(_frame);
 
@@ -84,7 +84,7 @@ namespace BaconJam2013
             data.SpriteBatch.Draw(currentFrame.Texture, Pos, currentFrame.Source, BlendColor, Rot, Origin, Vector2.One, SpriteEffects.None, Depth);
         }
 
-        public void AnimationComplete(object sender, EventArgs data)
+        public virtual void AnimationComplete(object sender, EventArgs data)
         {
             _animationComplete = true;
         }
@@ -92,6 +92,13 @@ namespace BaconJam2013
         public Rectangle Bounds()
         {
             return new Rectangle((int)Pos.X, (int)Pos.Y, (int)Size.X, (int)Size.Y);
+        }
+
+        public virtual void Reset()
+        {
+            _frame = 0;
+            _animationTimeout = _animation.FrameTime;
+            _animationComplete = false;
         }
 
         public void SetAnimation(Animation animation, bool useDefaults = true)
@@ -103,7 +110,8 @@ namespace BaconJam2013
 
             if (useDefaults)
             {
-                _animationTimeout = animation.FrameTime;
+                _animationTimeout = _animation.FrameTime;
+                Origin = _animation.Origin;
                 Animating = _animation.Animating;
                 Looping = _animation.Looping;
                 _animationComplete = false;

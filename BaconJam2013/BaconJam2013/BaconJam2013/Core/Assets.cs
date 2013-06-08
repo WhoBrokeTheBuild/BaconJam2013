@@ -48,7 +48,9 @@ namespace BaconJam2013
             {
 
                 string texture = "Sprites/" + Config.GetText("Assets", spriteName, "Texture");
-                List<Sprite> frames = new List<Sprite>();
+                List<Sprite> 
+                    frames = new List<Sprite>(),
+                    ordered = new List<Sprite>();
 
                 int
                     count,
@@ -58,7 +60,8 @@ namespace BaconJam2013
                     frameTime;
 
                 Vector2 
-                    size;
+                    size,
+                    origin;
 
                 bool 
                     animating = true, 
@@ -67,12 +70,13 @@ namespace BaconJam2013
                 if (!mTextures.ContainsKey(texture))
                     mTextures.Add(texture, pContent.Load<Texture2D>(texture));
 
-                Rectangle[] frameOrder = Config.GetRectangleList("Assets", spriteName, "FrameOrder");
-                count     = Config.GetInt("Assets", spriteName, "Auto");
-                cols      = Config.GetInt("Assets", spriteName, "Cols");
-                size      = Config.GetVector2("Assets", spriteName, "Size");
+                int[] frameOrder = Config.GetIntList("Assets", spriteName, "FrameOrder");
+                count = Config.GetInt("Assets", spriteName, "Auto");
+                cols = Config.GetInt("Assets", spriteName, "Cols");
+                size = Config.GetVector2("Assets", spriteName, "Size");
+                origin = Config.GetVector2("Assets", spriteName, "Origin");
                 frameTime = Config.GetFloat("Assets", spriteName, "Speed");
-                looping   = (Config.GetText("Assets", spriteName, "Loop") == "T");
+                looping = (Config.GetText("Assets", spriteName, "Loop") == "T");
 
                 int x = 0, y = 0;
                 int col = 0;
@@ -88,7 +92,12 @@ namespace BaconJam2013
                     }
                 }
 
-                mAnimations.Add(spriteName, new Animation(frames, size, frameTime, animating, looping));
+                for (int i = 0; i < frameOrder.Length; ++i)
+                {
+                    ordered.Add(frames[frameOrder[i]]);
+                }
+
+                mAnimations.Add(spriteName, new Animation(ordered, size, frameTime, origin, animating, looping));
 
             }
 

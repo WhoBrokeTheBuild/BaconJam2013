@@ -22,16 +22,18 @@ namespace BaconJam2013
             Looping;
 
         public Vector2
-            FrameSize;
+            FrameSize,
+            Origin;
 
         public float
             FrameTime;
 
-        public Animation(List<Sprite> frames, Vector2 size, float frameTime, bool animating = false, bool looping = false)
+        public Animation(List<Sprite> frames, Vector2 size, float frameTime, Vector2 origin, bool animating = false, bool looping = false)
         {
             _frames = frames;
             FrameSize = size;
             FrameTime = frameTime;
+            Origin = origin;
             Animating = animating;
             Looping = looping;
         }

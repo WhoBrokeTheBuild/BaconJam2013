@@ -111,7 +111,7 @@ namespace BaconJam2013
         }
 
         public Texture2D attackFlowerIdle;
-        public BasicUnit attackFlower;
+        public Player attackFlower;
 
         protected override void LoadContent()
         {
@@ -125,7 +125,15 @@ namespace BaconJam2013
 
             _assets.LoadAssets(Content);
 
-            attackFlower = new BasicUnit(Assets.Animations["attackflower-bright-tendril"], new Vector2(100), Color.White);
+            attackFlower = new Player(new Vector2(200));
+
+            Input.PressedEvent += InputPressed;
+        }
+
+        public void InputPressed(object sender, InputData data)
+        {
+            if (data.Input == GameInputs.Jump)
+                attackFlower.Reset();
         }
 
         protected override void UnloadContent()
@@ -148,7 +156,7 @@ namespace BaconJam2013
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(new Color(00, 170, 170));
 
             _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
 

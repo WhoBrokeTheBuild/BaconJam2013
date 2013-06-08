@@ -111,6 +111,7 @@
     <Compile Include="Core\Assets.cs" />
     <Compile Include="Graphics\Animation.cs" />
     <Compile Include="Graphics\Sprite.cs" />
+    <Compile Include="Units\ActiveUnit.cs" />
     <Compile Include="Units\BasicUnit.cs" />
     <Compile Include="Core\Input.cs" />
     <Compile Include="Units\Player.cs" />
