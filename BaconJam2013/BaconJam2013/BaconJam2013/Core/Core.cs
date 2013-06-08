@@ -125,7 +125,7 @@ namespace BaconJam2013
 
             _assets.LoadAssets(Content);
 
-            attackFlower = new BasicUnit(Assets.Animations["attackflower-idle"], new Vector2(100), Color.White);
+            attackFlower = new BasicUnit(Assets.Animations["attackflower-bright-tendril"], new Vector2(100), Color.White);
         }
 
         protected override void UnloadContent()
