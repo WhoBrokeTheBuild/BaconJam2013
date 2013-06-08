@@ -1,0 +1,40 @@
+The perspective is true orthogonal, directly from the side.
+
+Player Character; idle, moving, jumping, falling, being damaged, holding onto a vine, climbing up a vine(?), jumping from a vine(?), holding up arm straight /w fingers streched (a la Iron Man http://tinyurl.com/c367jhv )
+
+Pedestal the gloves are going to be on when the player initially acquires them
+Anti-light (black?) glove to be on top of the pedestal
+Light (white?) glove to be on top of the pedestal
+Switch with two different states, both on and off. Cam should have uploaded the related sfx to the repo, listen to them.
+Point Light 
+Spot Light (For both of the lights, maybe create the assets as if they were attached to the back wall (so they won't appear like they're floating?))
+
+
+(Maybe all plants could have an idle animation, at least when they are in grown/active state?)
+Vine Plant (Like all other plants, two colors and shrunk/grown states) (Grown states need to be of varying length, repeating texture??) 
+Attacker Plant (The attacker plant will be docile (i.e not attack anything) when it's under it's activator light. Would be cool to have a very docile-looking idle anim, to let the player know that it's not a threat? (Stretch?))
+Blocker Plant
+Shooter Plant
+Platform Plant
+
+Light Pellet 
+Anti-Light Pellet (Stretch Goal?)
+
+The general setting is an abandoned/overgrown research facility in the near future.
+
+You may want to make the surface areas be heavily dilapidated concrete with patches of soil visible to justify stuff growing on it.
+The part of the surface textures farthest from the surface should slowly fade to black, so putting a right facing surface tile to the right of a left-facing surface tile would not look bad.
+Need pitch-black tiles for non-interactable tiles that sit between surfacesthat are not adjacent.
+
+Background could be similar, delapidated concrete, not too much lab stuff cluttering the background (because we may be attaching point light and spot lights in various locations)
+I think that having backgrounds as full pieces instead of a bunch of modular tiles would result in an increase in quality that will be worth the effort. We won't need a unique bg for every level,
+maybe just 3 that will cycle through? (Stretch goal, just get 1 bg done for now)
+
+Health Bar (I was thinking of a single, continous red bar inside of a steel-y grayish box that gets shorter as the player gets damaged.)
+
+"You Died, Retry?" Screen
+
+Title Screen
+Credits
+Options(I'm not sure if this applies, better just ask Steve)
+End Screen (What would this be?)
