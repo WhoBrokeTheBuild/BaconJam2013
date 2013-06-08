@@ -270,7 +270,7 @@ namespace BaconJam2013
                 newState = new MultiState(),
                 oldState = _inputState;
 
-            List<GameInputs> gameInputs = EnumUtil.GetValues<GameInputs>();
+            List<GameInputs> gameInputs = Util.GetValues<GameInputs>();
 
             for (int i = 0; i < gameInputs.Count; ++i)
             {

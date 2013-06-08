@@ -78,6 +78,12 @@ namespace BaconJam2013
         private Input
             _input;
 
+        private Config
+            _config;
+
+        private Assets
+            _assets;
+
         public const int
             WIDTH = 640,
             HEIGHT = 480,
@@ -114,19 +120,12 @@ namespace BaconJam2013
             _currentFPS = 0.0f;
 
             _input = new Input();
+            _config = new Config();
+            _assets = new Assets();
 
-            attackFlowerIdle = Content.Load<Texture2D>("sprsht_attackflower_idle");
+            _assets.LoadAssets(Content);
 
-            List<Sprite> frames = new List<Sprite>();
-
-            for (int i = 0; i < 10; ++i)
-            {
-                frames.Add(new Sprite(attackFlowerIdle, new Rectangle(i * 60, 0, 60, 60)));
-            }
-
-            Animation anim = new Animation(frames, new Vector2(60), 200, true, true);
-
-            attackFlower = new BasicUnit(anim, new Vector2(100), Color.White);
+            attackFlower = new BasicUnit(Assets.Animations["attackflower-idle"], new Vector2(100), Color.White);
         }
 
         protected override void UnloadContent()

@@ -42,12 +42,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sprsht_attackflower_idle.png">
-      <Name>sprsht_attackflower_idle</Name>
+    <Compile Include="Sprites\sprsht-attackflower-idle.png">
+      <Name>sprsht-attackflower-idle</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\Game.cfg">
+      <Name>Game</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\Menus.cfg">
+      <Name>Menus</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\Assets.cfg">
+      <Name>Assets</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
