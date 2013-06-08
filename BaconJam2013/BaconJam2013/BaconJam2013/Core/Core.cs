@@ -71,6 +71,15 @@ namespace BaconJam2013
         Right
     }
 
+    public enum Direction
+    {
+        None = -1,
+        North,
+        South,
+        East,
+        West
+    }
+
     public class Core 
         : Microsoft.Xna.Framework.Game
     {

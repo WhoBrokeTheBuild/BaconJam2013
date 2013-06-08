@@ -53,7 +53,7 @@ namespace BaconJam2013
             _floor;
 
         public Player(Vector2 pos)
-            : base(Assets.Animations["attackflower-bright-idle"], pos, Vector2.Zero, Vector2.Zero, Color.White)
+            : base(null, pos, Vector2.Zero, Vector2.Zero, Color.White)
         {
             _gravity = Config.GetFloat("Gravity");
 
@@ -71,8 +71,9 @@ namespace BaconJam2013
 
             _floor = 2048;
 
-            VertState = VertState.Air;
-            State = State.Jump;
+            Depth = 0.0f;
+
+            SetState(State.Jump, VertState.Air);
         }
 
         public override void Update(object sender, UpdateData data)
@@ -83,17 +84,34 @@ namespace BaconJam2013
             {
                 Vel.Y -= _gravity;
 
+                if (State == State.Jump)
+                {
+                    if (Util.Sign(Vel.Y) == 1)
+                    {
+                        SetAnimation(Assets.Animations["eugene-descending"]);
+                    }
+                    else
+                    {
+                        SetAnimation(Assets.Animations["eugene-ascending"]);
+                    }
+                }
+
                 if (Pos.Y > _floor)
                 {
                     Vel.Y = 0;
                     Pos.Y = _floor;
-                    State = State.Idle;
-                    VertState = VertState.Ground;
+                    SetState(State.Idle, VertState.Ground);
                 }
             }
 
             if (Math.Abs(Vel.X) < _minSpeedThreshold)
+            {
                 Vel.X = 0.0f;
+                if (State == State.Walk)
+                {
+                    SetState(State.Idle, VertState.Ground);
+                }
+            }
 
             if (Vel.X != 0.0f)
             {
@@ -116,11 +134,6 @@ namespace BaconJam2013
             base.Render(sender, data);
 
             Rectangle bounds = Bounds();
-
-            data.SpriteBatch.Draw(Assets.Animations["tile-placeholder"].Frame(0).Texture, new Vector2(bounds.Left, bounds.Top) - Viewport.Pos, Color.Red);
-            data.SpriteBatch.Draw(Assets.Animations["tile-placeholder"].Frame(0).Texture, new Vector2(bounds.Left, bounds.Bottom) - Viewport.Pos, Color.Red);
-            data.SpriteBatch.Draw(Assets.Animations["tile-placeholder"].Frame(0).Texture, new Vector2(bounds.Right, bounds.Top) - Viewport.Pos, Color.Red);
-            data.SpriteBatch.Draw(Assets.Animations["tile-placeholder"].Frame(0).Texture, new Vector2(bounds.Right, bounds.Bottom) - Viewport.Pos, Color.Red);
         }
 
         public override void InputPressed(object sender, InputData data)
@@ -133,7 +146,7 @@ namespace BaconJam2013
                     {
                         Vel.Y -= _jumpVelStart;
                         _jumpVelLeft = _jumpVelMax - _jumpVelStart;
-                        VertState = VertState.Air;
+                        SetState(State.Jump, VertState.Air);
                     }
 
                     break;
@@ -162,15 +175,65 @@ namespace BaconJam2013
                     break;
                 case GameInputs.Left:
 
+                    if (State == State.Idle)
+                    {
+                        SetState(State.Walk, VertState.Ground);
+                    }
+
                     Vel.X -= _moveAcc;
 
                     break;
                 case GameInputs.Right:
+
+                    if (State == State.Idle)
+                    {
+                        SetState(State.Walk, VertState.Ground);
+                    }
 
                     Vel.X += _moveAcc;
 
                     break;
             }
         }
+
+        public void SetState(State state, VertState vertState)
+        {
+            State = state;
+            VertState = vertState;
+
+            switch (VertState)
+            {
+                case VertState.Ground:
+
+                    switch (state)
+                    {
+                        case State.Idle:
+
+                            SetAnimation(Assets.Animations["eugene-idle"]);
+
+                            break;
+                        case State.Walk:
+
+                            SetAnimation(Assets.Animations["eugene-walking"]);
+
+                            break;
+                    }
+
+                    break;
+                case VertState.Air:
+
+                    switch (state)
+                    {
+                        case State.Jump:
+
+                            SetAnimation(Assets.Animations["eugene-ascending"]);
+
+                            break;
+                    }
+
+                    break;
+            }
+        }
+
     }
 }

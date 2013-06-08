@@ -13,11 +13,15 @@ using Microsoft.Xna.Framework.Media;
 
 namespace BaconJam2013
 {
-    class Platform
+    public class Platform
     {
 
         public bool
-            JumpThrough;
+            JumpThrough,
+            Ramp;
+
+        public Direction
+            RampDir;
 
         public Vector2
             Pos,
@@ -28,6 +32,19 @@ namespace BaconJam2013
             Pos = pos;
             Size = size;
             JumpThrough = jumpThrough;
+            Ramp = false;
+            RampDir = Direction.None;
+
+            Core.RenderEvent += Render;
+        }
+
+        public Platform(Vector2 pos, Vector2 size, Direction dir)
+        {
+            Pos = pos;
+            Size = size;
+            JumpThrough = false;
+            Ramp = true;
+            RampDir = dir;
 
             Core.RenderEvent += Render;
         }
@@ -44,7 +61,26 @@ namespace BaconJam2013
             bounds.X -= (int)Viewport.Pos.X;
             bounds.Y -= (int)Viewport.Pos.Y;
 
-            data.SpriteBatch.Draw(Assets.Animations["tile-placeholder"].Frame(0).Texture, bounds, Color.Red);
+            Color col = Color.Red;
+
+            if (Ramp)
+            {
+                if (RampDir == Direction.West)
+                {
+                    col = Color.Blue;
+                }
+                else if (RampDir == Direction.East)
+                {
+                    col = Color.Green;
+                }
+            }
+
+            if (JumpThrough)
+            {
+                col = Color.Pink;
+            }
+
+            data.SpriteBatch.Draw(Assets.Animations["tile-placeholder"].Frame(0).Texture, bounds, new Rectangle(0, 0, 1, 1), col, 0.0f, Vector2.Zero, SpriteEffects.None, 1.0f);
         }
 
     }

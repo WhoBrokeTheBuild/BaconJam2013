@@ -45,7 +45,8 @@ namespace BaconJam2013
 
         public bool
             Animating,
-            Looping;
+            Looping,
+            Flip;
 
         public BasicUnit(Animation animation, Vector2 pos, Color blendColor, float rot = 0.0f, float depth = 1.0f)
         {
@@ -60,6 +61,8 @@ namespace BaconJam2013
 
             _frame = 0;
             _animationComplete = false;
+
+            Flip = false;
 
             Core.UpdateEvent += Update;
             Core.RenderEvent += Render;
@@ -104,6 +107,9 @@ namespace BaconJam2013
         public void SetAnimation(Animation animation, bool useDefaults = true)
         {
             _animation = animation;
+
+            if (_animation == null)
+                return;
 
             _frame = 0;
             Size = _animation.FrameSize;
