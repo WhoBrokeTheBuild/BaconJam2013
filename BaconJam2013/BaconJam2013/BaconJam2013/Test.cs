@@ -26,6 +26,7 @@ namespace BaconJam2013
 
         public void Update(object sender, UpdateData data)
         {
+            Console.WriteLine(data.FrameDelta);
         }
 
         public void Render(object sender, RenderData data)
@@ -34,12 +35,10 @@ namespace BaconJam2013
 
         public void InputPressed(object sender, InputData data)
         {
-            Console.WriteLine("Pressed: " + data.Input);
         }
 
         public void InputReleased(object sender, InputData data)
         {
-            Console.WriteLine("Released: " + data.Input);
         }
 
         public void InputHeld(object sender, InputData data)

@@ -80,7 +80,11 @@ namespace BaconJam2013
 
         public const int
             WIDTH = 640,
-            HEIGHT = 480;
+            HEIGHT = 480,
+            TARGET_FPS = 60;
+
+        public float
+            _currentFPS;
 
         public Core()
         {
@@ -88,6 +92,9 @@ namespace BaconJam2013
 
             _graphics.PreferredBackBufferWidth = WIDTH;
             _graphics.PreferredBackBufferHeight = HEIGHT;
+
+            IsFixedTimeStep = true;
+            TargetElapsedTime = new TimeSpan(TimeSpan.TicksPerSecond / TARGET_FPS);
 
             Content.RootDirectory = "Content";
         }
@@ -100,6 +107,8 @@ namespace BaconJam2013
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            _currentFPS = 0.0f;
 
             _input = new Input();
 
@@ -116,8 +125,10 @@ namespace BaconJam2013
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
+            float currentFPS = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             if (UpdateEvent != null)
-                UpdateEvent(this, new UpdateData(gameTime, 0.0f));
+                UpdateEvent(this, new UpdateData(gameTime, TARGET_FPS / currentFPS));
 
             base.Update(gameTime);
         }

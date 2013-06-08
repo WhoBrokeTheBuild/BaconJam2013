@@ -36,6 +36,7 @@ namespace BaconJam2013
     public enum GameInputs
     {
         None = -1,
+        Exit,
         Up,
         Down,
         Left,
@@ -239,6 +240,19 @@ namespace BaconJam2013
             Core.UpdateEvent += new UpdateEventHandler(Update);
 
             _inputMap = new Dictionary<GameInputs, MultiInput>();
+
+            //_inputMap.Add(GameInputs.Exit, new MultiInput(Buttons.Back));
+            //
+            //_inputMap.Add(GameInputs.Up, new MultiInput(Buttons.DPadUp));
+            //_inputMap.Add(GameInputs.Left, new MultiInput(Buttons.DPadLeft));
+            //_inputMap.Add(GameInputs.Down, new MultiInput(Buttons.DPadDown));
+            //_inputMap.Add(GameInputs.Right, new MultiInput(Buttons.DPadRight));
+            //
+            //_inputMap.Add(GameInputs.Jump, new MultiInput(Buttons.A));
+            //
+            //_inputMap.Add(GameInputs.Fire, new MultiInput(Buttons.LeftShoulder));
+
+            _inputMap.Add(GameInputs.Exit, new MultiInput(Keys.Escape));
 
             _inputMap.Add(GameInputs.Up, new MultiInput(Keys.W));
             _inputMap.Add(GameInputs.Left, new MultiInput(Keys.A));
