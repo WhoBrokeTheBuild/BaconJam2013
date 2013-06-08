@@ -107,9 +107,6 @@ namespace BaconJam2013
                     }
                 }
 
-                if (hitSide != Side.None)
-                    Console.WriteLine(hitSide);
-
                 switch (hitSide)
                 {
                     case Side.Top:

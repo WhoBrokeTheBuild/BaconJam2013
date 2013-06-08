@@ -48,7 +48,9 @@ namespace BaconJam2013
             _moveAcc,
             _speedMax,
             _damping,
-            _airDamping;
+            _airDamping,
+            _minSpeedThreshold,
+            _floor;
 
         public Player(Vector2 pos)
             : base(Assets.Animations["attackflower-bright-idle"], pos, Vector2.Zero, Vector2.Zero, Color.White)
@@ -65,6 +67,10 @@ namespace BaconJam2013
             _moveAcc = Config.GetFloat("MovementAcc");
             _speedMax = Config.GetFloat("MaxSpeed");
 
+            _minSpeedThreshold = Config.GetFloat("MinSpeedThreshold");
+
+            _floor = 2048;
+
             VertState = VertState.Air;
             State = State.Jump;
         }
@@ -77,16 +83,16 @@ namespace BaconJam2013
             {
                 Vel.Y -= _gravity;
 
-                if (Pos.Y > 2048)
+                if (Pos.Y > _floor)
                 {
                     Vel.Y = 0;
-                    Pos.Y = 2048;
+                    Pos.Y = _floor;
                     State = State.Idle;
                     VertState = VertState.Ground;
                 }
             }
 
-            if (Math.Abs(Vel.X) < 0.01f)
+            if (Math.Abs(Vel.X) < _minSpeedThreshold)
                 Vel.X = 0.0f;
 
             if (Vel.X != 0.0f)
