@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="tile_ground" tilewidth="32" tileheight="32" spacing="1">
+  <image source="sheets/tile_ground.png" width="131" height="164"/>
+ </tileset>
+ <tileset firstgid="21" name="tile_indicators" tilewidth="32" tileheight="32">
+  <image source="sheets/tile_indicators.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="85" name="tile_lights" tilewidth="32" tileheight="32">
+  <image source="sheets/tile_lights.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="149" name="tile_plants" tilewidth="32" tileheight="32">
+  <image source="sheets/tile_plants.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="213" name="tile_platforms" tilewidth="32" tileheight="32">
+  <image source="sheets/tile_platforms.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="277" name="tile_special" tilewidth="32" tileheight="32">
+  <image source="sheets/tile_special.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="341" name="tile_switches" tilewidth="32" tileheight="32">
+  <image source="sheets/tile_switches.png" width="256" height="256"/>
+ </tileset>
+ <layer name="visual_lights" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztzjENAAAIA7C5xL8TROwgJK2CJgAAvbkOAC8sd4MAWA==
+  </data>
+ </layer>
+ <layer name="visual_switches" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztzgENAAAIA6Ab0v5VDGAANwcJSAAAYOu6HvDRANYPAFc=
+  </data>
+ </layer>
+ <layer name="default_states" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0UENAAAIxLBTgX+piADCp1WwZAkAwFx9B7DOUy40m9gALQ==
+  </data>
+ </layer>
+ <layer name="platforms" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIKRCa5jwVcH1EUIgM1thDA93U6O++jpflq4j5p+GWj3oWNs7hvMYNR9lIGh4L7BXv6Ro4dUN15joF6eJtaN9LAHBABkmYZU
+  </data>
+ </layer>
+ <layer name="interactions" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0UENAAAIxLBzgX+niADCp1WwZAkAwFx9B7DOUy40olwALw==
+  </data>
+ </layer>
+ <layer name="visual_blocks" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztldEKhCAQRX2I6EVl/v9ndwMvnWI2EZZmYb1w0RCb41DXlKampqb+U5vjNZToUH27tHG3tefdHvfT7GLK4LLm+sF37N/mJ5tdnDFnj3OzWDU3zO/4R86iGqqv2mLyWPlNGPYUrJPZ6wHPR16vf7+sEg3QUY0G6ChHA3TUy4ro/GPO8b9ihjBztDbKuKTxPmyoV9I5Z3iXMOc4jtSxy3uYOcwj3gHa8wIuhgmG
+  </data>
+ </layer>
+</map>
