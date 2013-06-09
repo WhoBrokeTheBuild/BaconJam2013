@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="40" height="20" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="ground0" tilewidth="32" tileheight="32">
-  <image source="../sheets/ground0.png" width="256" height="256"/>
+ <properties>
+  <property name="name" value="level3"/>
+ </properties>
+ <tileset firstgid="1" name="tile_ground" tilewidth="32" tileheight="32">
+  <image source="../sheets/tile_ground.png" width="160" height="192"/>
  </tileset>
- <tileset firstgid="65" name="indicators0" tilewidth="32" tileheight="32">
-  <image source="../sheets/indicators0.png" width="256" height="256"/>
+ <tileset firstgid="31" name="tile_indicators" tilewidth="32" tileheight="32">
+  <image source="../sheets/tile_indicators.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="129" name="lights0" tilewidth="32" tileheight="32">
-  <image source="../sheets/lights0.png" width="256" height="256"/>
+ <tileset firstgid="95" name="tile_lights" tilewidth="32" tileheight="32">
+  <image source="../sheets/tile_lights.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="193" name="plants0" tilewidth="32" tileheight="32">
-  <image source="../sheets/plants0.png" width="256" height="256"/>
+ <tileset firstgid="159" name="tile_plants" tilewidth="32" tileheight="32">
+  <image source="../sheets/tile_plants.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="257" name="special0" tilewidth="32" tileheight="32">
-  <image source="../sheets/special0.png" width="256" height="256"/>
+ <tileset firstgid="223" name="tile_special" tilewidth="32" tileheight="32">
+  <image source="../sheets/tile_special.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="321" name="switches0" tilewidth="32" tileheight="32">
-  <image source="../sheets/switches0.png" width="256" height="256"/>
+ <tileset firstgid="287" name="tile_switches" tilewidth="32" tileheight="32">
+  <image source="../sheets/tile_switches.png" width="256" height="256"/>
  </tileset>
  <layer name="platforms" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJztlksKwCAMRKPWz/1PbLMrEtCYYEuZgbeV5xAlhYjqYYqCQOcT4Ac/+MEPfvD7oV/+uB9ndU+IL/lxZo7VcPZ10x4kZ0eLG2ecccucSDuiNmNf0p09+tyN5k/wfHdtEY2b1OcuHfOtBrI=
+   eJwTYWBgEBnkmN5g1H2j7ht136j7Rt036r5R9w0MoJf7xGnsRnIBM5o5TDRwI7XcRgs3UsOMwZSuB8p95NhLTwwAU3cW3g==
   </data>
  </layer>
  <layer name="objects" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJztzrENACAIBVGUAV3awWwpgMqEX9xLrj8zAACAv/aaPui5+B803FB0Bl4y1Z+6BzRJBO8=
+   eJxjYBgFo2AUjIJRMApGwSigLngw0A4YBaOACmAREkYGkQPgFmwAl/sGC+AGYk4oRgYA9aUFIw==
   </data>
  </layer>
  <layer name="backgrounds" width="40" height="20">
@@ -33,9 +36,9 @@
    eJztwTEBAAAAwqD1T20LL6AAAAA+BgyAAAE=
   </data>
  </layer>
- <layer name="defaults" width="40" height="20" opacity="0.1">
+ <layer name="defaults" width="40" height="20" opacity="0.4">
   <data encoding="base64" compression="zlib">
-   eJztzjENAAAIA7AZxL8dTCyBo1XQ5L+5DgAAABULndkATg==
+   eJztwSEBAAAAAiD/+P+fL0xAAwAA8DEmHgAs
   </data>
  </layer>
  <layer name="interactions" width="40" height="20" opacity="0.1">
