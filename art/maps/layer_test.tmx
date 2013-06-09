@@ -31,19 +31,24 @@
    eJztzgENAAAIA6Ab0v5VDGAANwcJSAAAYOu6HvDRANYPAFc=
   </data>
  </layer>
- <layer name="default_states" width="40" height="20">
-  <data encoding="base64" compression="zlib">
-   eJzt0UENAAAIxLBTgX+piADCp1WwZAkAwFx9B7DOUy40m9gALQ==
-  </data>
- </layer>
  <layer name="platforms" width="40" height="20">
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjIKRCa5jwVcH1EUIgM1thDA93U6O++jpflq4j5p+GWj3oWNs7hvMYNR9lIGh4L7BXv6Ro4dUN15joF6eJtaN9LAHBABkmYZU
   </data>
  </layer>
+ <layer name="objects" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztzgEJADAIADANeezfxBAeBNkSLAIAYK62A3z3cnvARQ1BIQCu
+  </data>
+ </layer>
  <layer name="interactions" width="40" height="20">
   <data encoding="base64" compression="zlib">
    eJzt0UENAAAIxLBzgX+niADCp1WwZAkAwFx9B7DOUy40olwALw==
+  </data>
+ </layer>
+ <layer name="default_states" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0UENAAAIxLBTgX+piADCp1WwZAkAwFx9B7DOUy40m9gALQ==
   </data>
  </layer>
  <layer name="visual_blocks" width="40" height="20">
