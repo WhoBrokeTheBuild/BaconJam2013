@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="20" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="name" value="level2"/>
+ </properties>
+ <tileset firstgid="1" name="ground0" tilewidth="32" tileheight="32">
+  <image source="../sheets/ground0.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="65" name="indicators0" tilewidth="32" tileheight="32">
+  <image source="../sheets/indicators0.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="129" name="lights0" tilewidth="32" tileheight="32">
+  <image source="../sheets/lights0.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="193" name="plants0" tilewidth="32" tileheight="32">
+  <image source="../sheets/plants0.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="257" name="special0" tilewidth="32" tileheight="32">
+  <image source="../sheets/special0.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="321" name="switches0" tilewidth="32" tileheight="32">
+  <image source="../sheets/switches0.png" width="256" height="256"/>
+ </tileset>
+ <layer name="platforms" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztlN0KwCAIRr/24/b+T7y8k4EtW2FsCge6EDqZSgCOSaFMwryREH5abJn1IcfTj+/l/io59vbjmpyVkEDL6e23o+/8xny8ixY/S4+1IH34vDS8iQZy97PGLH7aP450s/iNrtMX/Hif1ux3Lz84eoTfP/0YOQcX4/4KvQ==
+  </data>
+ </layer>
+ <layer name="objects" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUgIAr40C7YBRQGxxGwrQCJyjQi819jZQ5ZxRgAe04xJHz/Cm6uGQUUBP4Q2nkeKQkP46CUTAK6AcA718JFg==
+  </data>
+ </layer>
+ <layer name="backgrounds" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20LL6AAAAA+BgyAAAE=
+  </data>
+ </layer>
+ <layer name="defaults" width="40" height="20" opacity="0.28">
+  <data encoding="base64" compression="zlib">
+   eJxjYBj8wHegHTAKRsEoGAU4gAuVzXOisnmjgIHBkQg11I7HUTAwYDQeR8EoGBoAACsxAZ0=
+  </data>
+ </layer>
+ <layer name="interactions" width="40" height="20" opacity="0.08">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUgIDLQDtgFIwChtF0SAvgTKL4KBhawGegHTAKRsEoIBkAAGhgAVs=
+  </data>
+ </layer>
+</map>
