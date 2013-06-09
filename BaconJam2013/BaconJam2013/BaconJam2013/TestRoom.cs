@@ -14,23 +14,60 @@ namespace BaconJam2013
     class TestRoom
     {
 
+        private class Range
+        {
+            public int
+                Min,
+                Max;
+
+            public Range(int min, int max)
+            {
+                Min = min;
+                Max = max;
+            }
+
+            public bool Contains(int number)
+            {
+                return (number >= Min && number <= Max);
+            }
+        }
+
         private Player
             _player;
 
         private List<Platform>
             _platforms;
 
-        private int[,] _platformLayer;
+        private List<BasicUnit>
+            _tiles;
+
+        private int[,] 
+            _visibleLayer,
+            _objectLayer;
 
         private const int
-            TileNormal = 1,
-            TileEastRamp = 4,
-            TileWestRamp = 3;
+            TilePlatform = 3,
+            TileEastRamp = 2,
+            TileWestRamp = 1,
+            TilePlayerSpawn = 68;
+
+        private Dictionary<string, Range>
+            Tilesets;
 
         public TestRoom()
         {
             _player = new Player(new Vector2(320, 0));
             Viewport.Follow(_player);
+
+            Tilesets = new Dictionary<string, Range>();
+
+            Tilesets.Add("platform-tiles", new Range(1, 64));
+            Tilesets.Add("special-tiles", new Range(65, 128));
+            Tilesets.Add("indicator-tiles", new Range(129, 192));
+            Tilesets.Add("lights-tiles", new Range(193, 256));
+            Tilesets.Add("switch-tiles", new Range(257, 320));
+            Tilesets.Add("plants-tiles", new Range(321, 384));
+            Tilesets.Add("ground-tiles", new Range(385, 500));
 
             int width = Config.GetInt("Maps", "test", "Width");
             int height = Config.GetInt("Maps", "test", "Height");
@@ -38,14 +75,18 @@ namespace BaconJam2013
 
             _player.Pos = Config.GetVector2("Maps", "test", "Player") * tileSize;
 
-            int[] platformData = Config.GetIntList("Maps", "test", "platforms");
-            _platformLayer = new int[width, height];
+            int[] objectData = Config.GetIntList("Maps", "test", "objects");
+            int[] tileData = Config.GetIntList("Maps", "test", "visual-layers", "visual_01");
+
+            _objectLayer = new int[width, height];
+            _visibleLayer = new int[width, height];
 
             int row = 0,
                 col = 0;
-            for (int i = 0; i < platformData.Length; ++i)
+            for (int i = 0; i < objectData.Length; ++i)
             {
-                _platformLayer[col, row] = platformData[i];
+                _objectLayer[col, row] = objectData[i];
+                _visibleLayer[col, row] = tileData[i];
 
                 ++col;
                 if (col == width)
@@ -56,27 +97,66 @@ namespace BaconJam2013
             }
 
             _platforms = new List<Platform>();
+            _tiles = new List<BasicUnit>();
 
             for (row = 0; row < height; ++row)
             {
                 for (col = 0; col < width; ++col)
                 {
-                    if (_platformLayer[col, row] == TileNormal)
+                    if (_objectLayer[col, row] != 0)
+                        Console.WriteLine(_objectLayer[col, row]);
+
+                    Vector2 pos = new Vector2(col * tileSize, row * tileSize);
+
+                    if (_objectLayer[col, row] == TilePlatform)
                     {
-                        _platforms.Add(new Platform(new Vector2(col * tileSize, row * tileSize), new Vector2(tileSize), false));
+                        _platforms.Add(new Platform(pos, new Vector2(tileSize), false));
                     }
-                    //else if (_platformLayer[col, row] == )
-                    //{
-                    //    _platforms.Add(new Platform(new Vector2(col * tileSize, row * tileSize), new Vector2(tileSize), true));
-                    //}
-                    else if (_platformLayer[col, row] == TileEastRamp)
+                    else if (_objectLayer[col, row] == TileEastRamp)
                     {
-                        _platforms.Add(new Platform(new Vector2(col * tileSize, row * tileSize), new Vector2(tileSize), Direction.East));
+                        _platforms.Add(new Platform(pos, new Vector2(tileSize), Direction.East));
                     }
-                    else if (_platformLayer[col, row] == TileWestRamp)
+                    else if (_objectLayer[col, row] == TileWestRamp)
                     {
-                        _platforms.Add(new Platform(new Vector2(col * tileSize, row * tileSize), new Vector2(tileSize), Direction.West));
+                        _platforms.Add(new Platform(pos, new Vector2(tileSize), Direction.West));
                     }
+                    else if (_objectLayer[col, row] == TilePlayerSpawn)
+                    {
+                        _player.Pos = pos;
+                    }
+
+                    if (_visibleLayer[col, row] != 0)
+                    {
+                        foreach (KeyValuePair<string, Range> pair in Tilesets)
+                        {
+                            if (!pair.Value.Contains(_visibleLayer[col, row]))
+                                continue;
+
+                            int sheetInd = _visibleLayer[col, row] - pair.Value.Min;
+
+                            Texture2D texture = Assets.Animations[pair.Key].Frame(0).Texture;
+
+                            Vector2 coord = Vector2.Zero;
+                            for (int i = 0; i < sheetInd; ++i)
+                            {
+                                coord.X += tileSize;
+                                if (coord.X >= texture.Width)
+                                {
+                                    coord.X = 0;
+                                    coord.Y += tileSize;
+                                }
+                            }
+
+                            Sprite sprite = new Sprite(texture, new Rectangle((int)coord.X, (int)coord.Y, tileSize, tileSize));
+                            List<Sprite> frames = new List<Sprite>();
+                            frames.Add(sprite);
+
+                            Animation newAnim = new Animation(frames, new Vector2(tileSize), 0, Vector2.Zero, false);
+
+                            _tiles.Add(new BasicUnit(newAnim, pos, Color.White));
+                        }
+                    }
+
                 }
             }
 

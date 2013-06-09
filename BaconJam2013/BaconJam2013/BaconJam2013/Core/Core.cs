@@ -105,10 +105,28 @@ namespace BaconJam2013
         private Viewport
             _viewport;
 
+        private Shaders
+            _shaders;
+
+        private HUD
+            _hud;
+
+        private Texture2D
+            _worldTexture;
+
+        private RenderTargetBinding[]
+            _renderTargetBinding;
+
+        private RenderTarget2D
+            _worldRenderTarget;
+
         public const int
-            WIDTH = 640,
-            HEIGHT = 480,
-            TARGET_FPS = 60;
+            Width = 640,
+            Height = 480,
+            TargetFPS = 60;
+
+        public const string
+            Title = "Phototropy";
 
         public float
             _currentFPS;
@@ -117,11 +135,13 @@ namespace BaconJam2013
         {
             _graphics = new GraphicsDeviceManager(this);
 
-            _graphics.PreferredBackBufferWidth = WIDTH;
-            _graphics.PreferredBackBufferHeight = HEIGHT;
+            _graphics.PreferredBackBufferWidth = Width;
+            _graphics.PreferredBackBufferHeight = Height;
+
+            Window.Title = Title;
 
             IsFixedTimeStep = true;
-            TargetElapsedTime = new TimeSpan(TimeSpan.TicksPerSecond / TARGET_FPS);
+            TargetElapsedTime = new TimeSpan(TimeSpan.TicksPerSecond / TargetFPS);
 
             Content.RootDirectory = "Content";
         }
@@ -143,8 +163,19 @@ namespace BaconJam2013
             _config = new Config();
             _assets = new Assets();
             _viewport = new Viewport();
+            _shaders = new Shaders(Content, GraphicsDevice);
+
+            _shaders.AddShader("fade");
+            _shaders.AddShader("lightsOff");
+            _shaders.AddShader("lightsOn");
+
+            Shaders.FadeAmount = 0.0f;
+
+            _worldRenderTarget = new RenderTarget2D(GraphicsDevice, Width, Height);
 
             _assets.LoadAssets(Content);
+
+            _hud = new HUD();
 
             test = new TestRoom();
         }
@@ -162,19 +193,34 @@ namespace BaconJam2013
             float currentFPS = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (UpdateEvent != null)
-                UpdateEvent(this, new UpdateData(gameTime, TARGET_FPS / currentFPS));
+                UpdateEvent(this, new UpdateData(gameTime, TargetFPS / currentFPS));
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
+            _renderTargetBinding = GraphicsDevice.GetRenderTargets();
+            GraphicsDevice.SetRenderTarget(_worldRenderTarget);
+
             GraphicsDevice.Clear(new Color(00, 170, 170));
 
-            _spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend);
+            _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
 
             if (RenderEvent != null)
                 RenderEvent(this, new RenderData(_spriteBatch));
+
+            _spriteBatch.End();
+
+            _worldTexture = _worldRenderTarget;
+            _worldTexture = _shaders.Draw(_spriteBatch, _worldTexture);
+
+            GraphicsDevice.SetRenderTargets(_renderTargetBinding);
+
+            _spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+
+            _spriteBatch.Draw(_worldTexture, Vector2.Zero, Color.White);
+            _hud.Draw(_spriteBatch);
 
             _spriteBatch.End();
 

@@ -42,7 +42,10 @@ namespace BaconJam2013
         Left,
         Right,
         Jump,
-        Fire
+        Fire,
+        Debug1,
+        Debug2,
+        Debug3
     }
 
     public enum InputType
@@ -262,6 +265,10 @@ namespace BaconJam2013
             _inputMap.Add(GameInputs.Jump, new MultiInput(Keys.Space));
 
             _inputMap.Add(GameInputs.Fire, new MultiInput(MouseButtons.Left));
+
+            _inputMap.Add(GameInputs.Debug1, new MultiInput(Keys.D1));
+            _inputMap.Add(GameInputs.Debug2, new MultiInput(Keys.D2));
+            _inputMap.Add(GameInputs.Debug3, new MultiInput(Keys.D3));
         }
 
         public void Update(object sender, UpdateData data)

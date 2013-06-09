@@ -180,6 +180,7 @@ namespace BaconJam2013
                         SetState(State.Walk, VertState.Ground);
                     }
 
+                    Flip = true;
                     Vel.X -= _moveAcc;
 
                     break;
@@ -190,6 +191,7 @@ namespace BaconJam2013
                         SetState(State.Walk, VertState.Ground);
                     }
 
+                    Flip = false;
                     Vel.X += _moveAcc;
 
                     break;
@@ -233,6 +235,14 @@ namespace BaconJam2013
 
                     break;
             }
+        }
+
+        public override void SetAnimation(Animation animation, bool useDefaults = true)
+        {
+            base.SetAnimation(animation, useDefaults);
+
+            Size.X = 42;
+            Origin.X = 24;
         }
 
     }

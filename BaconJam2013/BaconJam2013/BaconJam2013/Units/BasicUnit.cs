@@ -84,7 +84,7 @@ namespace BaconJam2013
             if (currentFrame == null)
                 return;
 
-            data.SpriteBatch.Draw(currentFrame.Texture, Pos - Viewport.Pos, currentFrame.Source, BlendColor, Rot, Origin, Vector2.One, SpriteEffects.None, Depth);
+            data.SpriteBatch.Draw(currentFrame.Texture, Pos - Viewport.Pos, currentFrame.Source, BlendColor, Rot, Origin, Vector2.One, (Flip ? SpriteEffects.FlipHorizontally : SpriteEffects.None), Depth);
         }
 
         public virtual void AnimationComplete(object sender, EventArgs data)
@@ -92,7 +92,7 @@ namespace BaconJam2013
             _animationComplete = true;
         }
 
-        public Rectangle Bounds()
+        public virtual Rectangle Bounds()
         {
             return new Rectangle((int)(Pos.X - Origin.X), (int)(Pos.Y - Origin.Y), (int)Size.X, (int)Size.Y);
         }
@@ -104,7 +104,7 @@ namespace BaconJam2013
             _animationComplete = false;
         }
 
-        public void SetAnimation(Animation animation, bool useDefaults = true)
+        public virtual void SetAnimation(Animation animation, bool useDefaults = true)
         {
             _animation = animation;
 
@@ -124,7 +124,7 @@ namespace BaconJam2013
             }
         }
 
-        private void UpdateAnimation(UpdateData data)
+        protected virtual void UpdateAnimation(UpdateData data)
         {
             _animationTimeout -= data.GameTime.ElapsedGameTime.Milliseconds;
             if (_animationTimeout < 0)

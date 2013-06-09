@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="40" height="20" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="tile_ground" tilewidth="32" tileheight="32" spacing="1">
-  <image source="sheets/tile_ground.png" width="131" height="164"/>
- </tileset>
- <tileset firstgid="21" name="tile_indicators" tilewidth="32" tileheight="32">
-  <image source="sheets/tile_indicators.png" width="256" height="256"/>
- </tileset>
- <tileset firstgid="85" name="tile_lights" tilewidth="32" tileheight="32">
-  <image source="sheets/tile_lights.png" width="256" height="256"/>
- </tileset>
- <tileset firstgid="149" name="tile_plants" tilewidth="32" tileheight="32">
-  <image source="sheets/tile_plants.png" width="256" height="256"/>
- </tileset>
- <tileset firstgid="213" name="tile_platforms" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="tile_platforms" tilewidth="32" tileheight="32">
   <image source="sheets/tile_platforms.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="277" name="tile_special" tilewidth="32" tileheight="32">
+ <tileset firstgid="65" name="tile_special" tilewidth="32" tileheight="32">
   <image source="sheets/tile_special.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="341" name="tile_switches" tilewidth="32" tileheight="32">
+ <tileset firstgid="129" name="tile_indicators" tilewidth="32" tileheight="32">
+  <image source="sheets/tile_indicators.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="193" name="tile_lights" tilewidth="32" tileheight="32">
+  <image source="sheets/tile_lights.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="257" name="tile_switches" tilewidth="32" tileheight="32">
   <image source="sheets/tile_switches.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="321" name="tile_plants" tilewidth="32" tileheight="32">
+  <image source="sheets/tile_plants.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="385" name="tile_ground" tilewidth="32" tileheight="32">
+  <image source="sheets/tile_ground.png" width="160" height="192"/>
  </tileset>
  <layer name="objects" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt1NEKABAMheF5SHlyvI5cKU04sRX7a5fL5wIiy7KsP8vMRFVRi7PNRtKO+CT9N3wn76Lt64fzIQVwbzfUJ9VLPu+uMYZp/x8rPmRn15jo3JteNUqcUyuZOocB
+   eJxjYBgFo2AUkAtcBtoBo4AiwIwFMw6oixAAm9sIYXq6nRz30dP9tHAfOsZnFyG/DLT7cKlF1kMOOEymPlIBue6jFxhO7mMcgEJxoMsPYtxHjh5S3cjEQHn+J9WN9LAHBAA50gLR
   </data>
  </layer>
  <layer name="defaults" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt0UENAAAIxLBTgX+piADCp1WwZAkAwFx9B7DOUy40m9gALQ==
+   eJzt0UENAAAIxLDTjnJEAOHTKliyBABgrr4DWOcpFxpbtQEF
   </data>
  </layer>
  <layer name="interactions" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt0UENAAAIxLBzgX+niADCp1WwZAkAwFx9B7DOUy40olwALw==
+   eJzt0UENAAAIxLDzjnFEAOHTKliyBABgrr4DWOcpFxpiOQEH
   </data>
  </layer>
- <layer name="visual_01" width="40" height="20">
+ <layer name="visual_01" width="40" height="20" visible="0">
   <data encoding="base64" compression="zlib">
-   eJztldEKhCAQRQ2W6EVlPi76/z9pA4c9G1Mx0ubDeuGSYTbHoa4hdHV1df2nJsNjU6KP8tupXDdLud9scT/NrkwRXFKcD3zGfjc/2WTniDF7HIuVVceC8Rm/Zy9aQ+trbWWyWPlNCNYkzJPZ6gH3R16rfzVaKtd5lR6qU6vcGuBC0fHsPPwM41BXWdE6/5hz/K+YIcwcnfMyvoK/DxPqpfCdMzxLmHO8eurI7j3MHOYRzwBdswJjJwoz
+   eJxjYBgFo2AUjIKRCaYyYuImRoT8dEbcegfCbYRwEx3dS4776Ol+WrgPHeOzi5BfQGr6aYxhgBS1yO4jBxwmTxvJgFz30QsMJ/cxDoBfBrr8oIX7yHFjGx3KsYHCADy9clk=
   </data>
  </layer>
 </map>

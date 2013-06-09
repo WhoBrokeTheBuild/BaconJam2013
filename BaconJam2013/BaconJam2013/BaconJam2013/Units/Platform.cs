@@ -56,6 +56,8 @@ namespace BaconJam2013
 
         public void Render(object sender, RenderData data)
         {
+            return; 
+
             Rectangle bounds = Bounds();
 
             bounds.X -= (int)Viewport.Pos.X;

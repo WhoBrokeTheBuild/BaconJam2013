@@ -109,6 +109,8 @@
   <ItemGroup>
     <Compile Include="Core\Config.cs" />
     <Compile Include="Core\Assets.cs" />
+    <Compile Include="Core\HUD.cs" />
+    <Compile Include="Core\Shaders.cs" />
     <Compile Include="Core\Viewport.cs" />
     <Compile Include="Graphics\Animation.cs" />
     <Compile Include="Graphics\Sprite.cs" />

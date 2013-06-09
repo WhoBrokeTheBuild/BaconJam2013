@@ -40,8 +40,8 @@ namespace BaconJam2013
             if (_follow == null)
                 return;
 
-            Pos.X = (float)(_follow.Pos.X - (Core.WIDTH / 2));
-            Pos.Y = (float)(_follow.Pos.Y - (Core.HEIGHT / 2));
+            Pos.X = (float)(_follow.Pos.X - (Core.Width / 2));
+            Pos.Y = (float)(_follow.Pos.Y - (Core.Height / 2));
         }
 
     }
