@@ -21,24 +21,14 @@
  <tileset firstgid="341" name="tile_switches" tilewidth="32" tileheight="32">
   <image source="sheets/tile_switches.png" width="256" height="256"/>
  </tileset>
- <layer name="visual_lights" width="40" height="20">
-  <data encoding="base64" compression="zlib">
-   eJztzjENAAAIA7C5xL8TROwgJK2CJgAAvbkOAC8sd4MAWA==
-  </data>
- </layer>
- <layer name="visual_switches" width="40" height="20">
-  <data encoding="base64" compression="zlib">
-   eJztzgENAAAIA6Ab0v5VDGAANwcJSAAAYOu6HvDRANYPAFc=
-  </data>
- </layer>
- <layer name="platforms" width="40" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIKRCa5jwVcH1EUIgM1thDA93U6O++jpflq4j5p+GWj3oWNs7hvMYNR9lIGh4L7BXv6Ro4dUN15joF6eJtaN9LAHBABkmYZU
-  </data>
- </layer>
  <layer name="objects" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJztzgEJADAIADANeezfxBAeBNkSLAIAYK62A3z3cnvARQ1BIQCu
+   eJzt1NEKABAMheF5SHlyvI5cKU04sRX7a5fL5wIiy7KsP8vMRFVRi7PNRtKO+CT9N3wn76Lt64fzIQVwbzfUJ9VLPu+uMYZp/x8rPmRn15jo3JteNUqcUyuZOocB
+  </data>
+ </layer>
+ <layer name="defaults" width="40" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt0UENAAAIxLBTgX+piADCp1WwZAkAwFx9B7DOUy40m9gALQ==
   </data>
  </layer>
  <layer name="interactions" width="40" height="20">
@@ -46,14 +36,9 @@
    eJzt0UENAAAIxLBzgX+niADCp1WwZAkAwFx9B7DOUy40olwALw==
   </data>
  </layer>
- <layer name="default_states" width="40" height="20">
+ <layer name="visual_01" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt0UENAAAIxLBTgX+piADCp1WwZAkAwFx9B7DOUy40m9gALQ==
-  </data>
- </layer>
- <layer name="visual_blocks" width="40" height="20">
-  <data encoding="base64" compression="zlib">
-   eJztldEKhCAQRX2I6EVl/v9ndwMvnWI2EZZmYb1w0RCb41DXlKampqb+U5vjNZToUH27tHG3tefdHvfT7GLK4LLm+sF37N/mJ5tdnDFnj3OzWDU3zO/4R86iGqqv2mLyWPlNGPYUrJPZ6wHPR16vf7+sEg3QUY0G6ChHA3TUy4ro/GPO8b9ihjBztDbKuKTxPmyoV9I5Z3iXMOc4jtSxy3uYOcwj3gHa8wIuhgmG
+   eJztldEKhCAQRQ2W6EVlPi76/z9pA4c9G1Mx0ubDeuGSYTbHoa4hdHV1df2nJsNjU6KP8tupXDdLud9scT/NrkwRXFKcD3zGfjc/2WTniDF7HIuVVceC8Rm/Zy9aQ+trbWWyWPlNCNYkzJPZ6gH3R16rfzVaKtd5lR6qU6vcGuBC0fHsPPwM41BXWdE6/5hz/K+YIcwcnfMyvoK/DxPqpfCdMzxLmHO8eurI7j3MHOYRzwBdswJjJwoz
   </data>
  </layer>
 </map>
